@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:our_first_app/Pages/HomePage.dart';
 
@@ -10,47 +11,39 @@ class LoadingPage extends StatefulWidget {
 
 class _LoadingPageState extends State<LoadingPage> {
   @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   _navigateToHomeScreen();
-  // }
-
-  Future<void> _navigateToHomeScreen() async {
-    // await Future.delayed(Duration(milliseconds: 2500), () {});
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                const MyHomePage(title: 'Flutter Demo Home Page')));
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: Container(
-      //   alignment: Alignment.center,
-      //   color: Colors.white,
-      //   height: MediaQuery.of(context).size.height,
-      //   width: MediaQuery.of(context).size.width,
-      //   child: const Text('Ну что, Диана, начнем?'),
-      // ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text('Ну что, Диана, начнем?')]),
+              children: [Text('Ну что, Диана, продолжим?')]),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FloatingActionButton(
-                onPressed: _navigateToHomeScreen,
-                tooltip: 'Начать',
-                child: const Text('Да!'),
-              ),
+              OpenContainer(
+                closedElevation: 0,
+                middleColor: Colors.lightBlue,
+                openElevation: 0,
+                transitionDuration: Duration(milliseconds: 1000),
+                closedBuilder: (context, action) => Container(
+                  alignment: Alignment.center,
+                  height: 50,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: Colors.lightBlue,
+                      borderRadius: BorderRadiusDirectional.circular(20)),
+                  child: Text(
+                    'Да!!!!',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                openBuilder: (context, action) =>
+                    MyHomePage(title: 'Наше первое занятие'),
+              )
             ],
           )
         ],

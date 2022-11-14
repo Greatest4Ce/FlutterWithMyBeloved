@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:our_first_app/Pages/SecondLessonPage.dart';
 import 'package:our_first_app/Widgets/Widget1.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -23,7 +24,26 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.arrow_back_ios)),
+            Text(widget.title),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (conetxt) => SecondLessonPage()));
+                },
+                icon: Icon(Icons.arrow_forward_ios))
+          ],
+        ),
       ),
       body: Center(
         child: Column(
