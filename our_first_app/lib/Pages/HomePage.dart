@@ -45,31 +45,29 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            SizedBox(
-              height: 200,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          const Text('You have pushed the button this many times:'),
+          SizedBox(
+            height: 200,
+          ),
+          Divider(
+            color: Colors.blue,
+          ),
+          Text('$_counter', style: Theme.of(context).textTheme.headline4),
+          Widget1(),
+          Text("Karim"),
+          Container(
+            width: 200,
+            height: 50,
+            color: Color.fromARGB(255, 204, 73, 221),
+            child: Icon(
+              Icons.add_photo_alternate,
+              color: Colors.white,
             ),
-            Divider(
-              color: Colors.blue,
-            ),
-            Text('$_counter', style: Theme.of(context).textTheme.headline4),
-            Widget1(),
-            Text("Karim"),
-            Container(
-              width: 200,
-              height: 50,
-              color: Color.fromARGB(255, 204, 73, 221),
-              child: Icon(
-                Icons.add_photo_alternate,
-                color: Colors.white,
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
